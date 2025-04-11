@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct PolycodeApp: App {
+    var sharedModelContainer: ModelContainer = {
+        try! ModelContainer(for: User.self)
+    }()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoadingView()
+                .modelContainer(sharedModelContainer)
         }
     }
 }
