@@ -14,6 +14,7 @@
 		86CA8FC22DA7E3380063D498 /* PolycodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA8FC12DA7E3380063D498 /* PolycodeTests.swift */; };
 		86CA8FCC2DA7E3380063D498 /* PolycodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA8FCB2DA7E3380063D498 /* PolycodeUITests.swift */; };
 		86CA8FCE2DA7E3380063D498 /* PolycodeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA8FCD2DA7E3380063D498 /* PolycodeUITestsLaunchTests.swift */; };
+		86CA8FE32DA8DB690063D498 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA8FE22DA8DB690063D498 /* CustomButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		86CA8FC72DA7E3380063D498 /* PolycodeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PolycodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CA8FCB2DA7E3380063D498 /* PolycodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolycodeUITests.swift; sourceTree = "<group>"; };
 		86CA8FCD2DA7E3380063D498 /* PolycodeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolycodeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		86CA8FE22DA8DB690063D498 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		86CA8FAF2DA7E3370063D498 /* Polycode */ = {
 			isa = PBXGroup;
 			children = (
+				86CA8FE12DA8DB4F0063D498 /* Components */,
 				86CA8FB02DA7E3370063D498 /* PolycodeApp.swift */,
 				86CA8FB22DA7E3370063D498 /* ContentView.swift */,
 				86CA8FB42DA7E3380063D498 /* Assets.xcassets */,
@@ -125,6 +128,14 @@
 				86CA8FCD2DA7E3380063D498 /* PolycodeUITestsLaunchTests.swift */,
 			);
 			path = PolycodeUITests;
+			sourceTree = "<group>";
+		};
+		86CA8FE12DA8DB4F0063D498 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				86CA8FE22DA8DB690063D498 /* CustomButtons.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86CA8FB32DA7E3370063D498 /* ContentView.swift in Sources */,
+				86CA8FE32DA8DB690063D498 /* CustomButtons.swift in Sources */,
 				86CA8FB12DA7E3370063D498 /* PolycodeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
