@@ -21,6 +21,7 @@ struct CheckButtonStyle: ButtonStyle {
 struct PathButtonStyle: ButtonStyle {
     let buttonColor: Color
     let shadowColor: Color
+    
     let highlightColor: Color
     
     func makeBody(configuration: Configuration) -> some View {
@@ -113,16 +114,16 @@ struct CustomButtonStyle: View {
             */
             
             //PathButton
-            /*
+            
              Button {} label: {
-             Image(systemName: "star.fill")
+                 Image(systemName: "star.fill")
              }
              .buttonStyle(PathButtonStyle(
-             buttonColor: Color("VictoryGoldFill"),
-             shadowColor: Color("VictoryGoldShadow"),
-             highlightColor: Color("VictoryGoldHighlight")
+                 buttonColor: Color("VictoryGoldFill"),
+                 shadowColor: Color("VictoryGoldShadow"),
+                 highlightColor: Color("VictoryGoldHighlight")
              ))
-             */
+             
             
             //Greyed out
             /*
