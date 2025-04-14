@@ -11,12 +11,26 @@
 		86A5A76F2DA91670001A7200 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A76E2DA91670001A7200 /* LoadingView.swift */; };
 		86A5A7732DA916F1001A7200 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A7722DA916F1001A7200 /* UserData.swift */; };
 		86A5A7752DA9172F001A7200 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A7742DA9172F001A7200 /* HomeView.swift */; };
+		86A5A7772DA91D09001A7200 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A7762DA91D09001A7200 /* QuizView.swift */; };
+		86A5A77B2DA91D5A001A7200 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A77A2DA91D5A001A7200 /* Lesson.swift */; };
+		86A5A77D2DA91D8C001A7200 /* MCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A77C2DA91D8C001A7200 /* MCView.swift */; };
+		86A5A77F2DA91D9A001A7200 /* DnDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A77E2DA91D9A001A7200 /* DnDView.swift */; };
+		86A5A7812DA91DCA001A7200 /* CodeFixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A7802DA91DCA001A7200 /* CodeFixView.swift */; };
+		86A5A7832DA91DE4001A7200 /* CodeWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A7822DA91DE4001A7200 /* CodeWriteView.swift */; };
+		86A5A7872DA91EB7001A7200 /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A7862DA91EB7001A7200 /* LessonView.swift */; };
+		86A5A7892DA9B79C001A7200 /* QuestionsTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A7882DA9B79C001A7200 /* QuestionsTypes.swift */; };
+		86A5A78B2DA9B9A4001A7200 /* QuizStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A78A2DA9B9A4001A7200 /* QuizStep.swift */; };
+		86A5A78D2DAC9DB3001A7200 /* SplitHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A78C2DAC9DB3001A7200 /* SplitHeader.swift */; };
+		86A5A78F2DAC9EC7001A7200 /* TextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A78E2DAC9EC7001A7200 /* TextModifier.swift */; };
+		86A5A7912DACAD82001A7200 /* SplitButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A7902DACAD82001A7200 /* SplitButtonTest.swift */; };
+		86A5A7952DACB3EB001A7200 /* FORLATER_AWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A7942DACB3EB001A7200 /* FORLATER_AWS.swift */; };
+		86A5A7972DACCC96001A7200 /* MorphingDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5A7962DACCC96001A7200 /* MorphingDivider.swift */; };
 		86CA8FB12DA7E3370063D498 /* PolycodeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA8FB02DA7E3370063D498 /* PolycodeApp.swift */; };
 		86CA8FB52DA7E3380063D498 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86CA8FB42DA7E3380063D498 /* Assets.xcassets */; };
 		86CA8FC22DA7E3380063D498 /* PolycodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA8FC12DA7E3380063D498 /* PolycodeTests.swift */; };
 		86CA8FCC2DA7E3380063D498 /* PolycodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA8FCB2DA7E3380063D498 /* PolycodeUITests.swift */; };
 		86CA8FCE2DA7E3380063D498 /* PolycodeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA8FCD2DA7E3380063D498 /* PolycodeUITestsLaunchTests.swift */; };
-		86CA8FE32DA8DB690063D498 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA8FE22DA8DB690063D498 /* CustomButtons.swift */; };
+		86CA8FE32DA8DB690063D498 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA8FE22DA8DB690063D498 /* CustomButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +55,20 @@
 		86A5A76E2DA91670001A7200 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		86A5A7722DA916F1001A7200 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		86A5A7742DA9172F001A7200 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		86A5A7762DA91D09001A7200 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		86A5A77A2DA91D5A001A7200 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		86A5A77C2DA91D8C001A7200 /* MCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCView.swift; sourceTree = "<group>"; };
+		86A5A77E2DA91D9A001A7200 /* DnDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DnDView.swift; sourceTree = "<group>"; };
+		86A5A7802DA91DCA001A7200 /* CodeFixView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeFixView.swift; sourceTree = "<group>"; };
+		86A5A7822DA91DE4001A7200 /* CodeWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWriteView.swift; sourceTree = "<group>"; };
+		86A5A7862DA91EB7001A7200 /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
+		86A5A7882DA9B79C001A7200 /* QuestionsTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTypes.swift; sourceTree = "<group>"; };
+		86A5A78A2DA9B9A4001A7200 /* QuizStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStep.swift; sourceTree = "<group>"; };
+		86A5A78C2DAC9DB3001A7200 /* SplitHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitHeader.swift; sourceTree = "<group>"; };
+		86A5A78E2DAC9EC7001A7200 /* TextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifier.swift; sourceTree = "<group>"; };
+		86A5A7902DACAD82001A7200 /* SplitButtonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitButtonTest.swift; sourceTree = "<group>"; };
+		86A5A7942DACB3EB001A7200 /* FORLATER_AWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FORLATER_AWS.swift; sourceTree = "<group>"; };
+		86A5A7962DACCC96001A7200 /* MorphingDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingDivider.swift; sourceTree = "<group>"; };
 		86CA8FAD2DA7E3370063D498 /* Polycode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polycode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CA8FB02DA7E3370063D498 /* PolycodeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolycodeApp.swift; sourceTree = "<group>"; };
 		86CA8FB42DA7E3380063D498 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,7 +77,7 @@
 		86CA8FC72DA7E3380063D498 /* PolycodeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PolycodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CA8FCB2DA7E3380063D498 /* PolycodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolycodeUITests.swift; sourceTree = "<group>"; };
 		86CA8FCD2DA7E3380063D498 /* PolycodeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolycodeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		86CA8FE22DA8DB690063D498 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
+		86CA8FE22DA8DB690063D498 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				86A5A7642DA91092001A7200 /* Home */,
-				86A5A7672DA910BC001A7200 /* Lesson */,
 				86A5A7652DA91097001A7200 /* Path */,
+				86A5A7672DA910BC001A7200 /* Lesson */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -92,6 +120,7 @@
 			children = (
 				86A5A76E2DA91670001A7200 /* LoadingView.swift */,
 				86A5A7742DA9172F001A7200 /* HomeView.swift */,
+				86A5A78C2DAC9DB3001A7200 /* SplitHeader.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -106,6 +135,12 @@
 		86A5A7672DA910BC001A7200 /* Lesson */ = {
 			isa = PBXGroup;
 			children = (
+				86A5A7862DA91EB7001A7200 /* LessonView.swift */,
+				86A5A7762DA91D09001A7200 /* QuizView.swift */,
+				86A5A77C2DA91D8C001A7200 /* MCView.swift */,
+				86A5A77E2DA91D9A001A7200 /* DnDView.swift */,
+				86A5A7822DA91DE4001A7200 /* CodeWriteView.swift */,
+				86A5A7802DA91DCA001A7200 /* CodeFixView.swift */,
 			);
 			path = Lesson;
 			sourceTree = "<group>";
@@ -114,6 +149,10 @@
 			isa = PBXGroup;
 			children = (
 				86A5A76C2DA914EE001A7200 /* User.swift */,
+				86A5A77A2DA91D5A001A7200 /* Lesson.swift */,
+				86A5A7882DA9B79C001A7200 /* QuestionsTypes.swift */,
+				86A5A78A2DA9B9A4001A7200 /* QuizStep.swift */,
+				86A5A7942DACB3EB001A7200 /* FORLATER_AWS.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,7 +218,10 @@
 		86CA8FE12DA8DB4F0063D498 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				86CA8FE22DA8DB690063D498 /* CustomButtons.swift */,
+				86CA8FE22DA8DB690063D498 /* CustomButtonStyle.swift */,
+				86A5A78E2DAC9EC7001A7200 /* TextModifier.swift */,
+				86A5A7902DACAD82001A7200 /* SplitButtonTest.swift */,
+				86A5A7962DACCC96001A7200 /* MorphingDivider.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -313,12 +355,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86CA8FE32DA8DB690063D498 /* CustomButtons.swift in Sources */,
+				86A5A7872DA91EB7001A7200 /* LessonView.swift in Sources */,
+				86CA8FE32DA8DB690063D498 /* CustomButtonStyle.swift in Sources */,
+				86A5A78D2DAC9DB3001A7200 /* SplitHeader.swift in Sources */,
 				86A5A76F2DA91670001A7200 /* LoadingView.swift in Sources */,
+				86A5A78F2DAC9EC7001A7200 /* TextModifier.swift in Sources */,
 				86CA8FB12DA7E3370063D498 /* PolycodeApp.swift in Sources */,
+				86A5A7812DA91DCA001A7200 /* CodeFixView.swift in Sources */,
+				86A5A77F2DA91D9A001A7200 /* DnDView.swift in Sources */,
+				86A5A7892DA9B79C001A7200 /* QuestionsTypes.swift in Sources */,
+				86A5A77B2DA91D5A001A7200 /* Lesson.swift in Sources */,
 				86A5A7752DA9172F001A7200 /* HomeView.swift in Sources */,
+				86A5A7772DA91D09001A7200 /* QuizView.swift in Sources */,
 				86A5A7732DA916F1001A7200 /* UserData.swift in Sources */,
+				86A5A77D2DA91D8C001A7200 /* MCView.swift in Sources */,
+				86A5A7912DACAD82001A7200 /* SplitButtonTest.swift in Sources */,
+				86A5A7952DACB3EB001A7200 /* FORLATER_AWS.swift in Sources */,
 				86A5A76D2DA914EE001A7200 /* User.swift in Sources */,
+				86A5A78B2DA9B9A4001A7200 /* QuizStep.swift in Sources */,
+				86A5A7832DA91DE4001A7200 /* CodeWriteView.swift in Sources */,
+				86A5A7972DACCC96001A7200 /* MorphingDivider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

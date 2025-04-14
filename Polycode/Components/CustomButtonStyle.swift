@@ -6,9 +6,7 @@ struct CheckButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .textCase(.uppercase)
-            .fontWeight(.bold)
-            .fontDesign(.rounded)
+            .polyfont()
             .frame(maxWidth: .infinity)
             .padding()
             .background(buttonColor)
@@ -63,31 +61,71 @@ struct PathButtonStyle: ButtonStyle {
     }
 }
 
+struct SplitButtonStyle: ButtonStyle {
+    let buttonColor: Color
+    let shadowColor: Color
+    let corners: UIRectCorner
 
-struct CustomButtons: View {
+
+    func makeBody(configuration: Configuration) -> some View {
+        RoundedCorner(radius: 12, corners: corners)
+            .fill(buttonColor)
+            .overlay(
+                configuration.label
+                    .polyfont()
+                    .foregroundStyle(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            )
+            .clipShape(RoundedCorner(radius: 12, corners: corners))
+            .shadow(color: shadowColor, radius: 0, y: configuration.isPressed ? 0 : 4)
+            .offset(y: configuration.isPressed ? 4 : 0)
+            .animation(.easeInOut(duration: 0.2), value: configuration.isPressed)
+    }
+}
+
+struct RoundedCorner: Shape {
+    var radius: CGFloat = 12
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        return Path(path.cgPath)
+    }
+}
+
+
+
+
+struct CustomButtonStyle: View {
     var body: some View {
         VStack {
             //CheckButton
             /*
-            Button {} label: {
-                Text("Check")
-            }
-            .buttonStyle(CheckButtonStyle(buttonColor: Color("KiwiFill"), shadowColor: Color("KiwiShadow")))
-             */
+             Button {} label: {
+             Text("Check")
+             }
+             .buttonStyle(CheckButtonStyle(buttonColor: Color("KiwiFill"), shadowColor: Color("KiwiShadow")))
+            */
             
             //PathButton
             /*
-            Button {} label: {
-                Image(systemName: "star.fill")
-            }
-            .buttonStyle(PathButtonStyle(
-                buttonColor: Color("VictoryGoldFill"),
-                shadowColor: Color("VictoryGoldShadow"),
-                highlightColor: Color("VictoryGoldHighlight")
-            ))
+             Button {} label: {
+             Image(systemName: "star.fill")
+             }
+             .buttonStyle(PathButtonStyle(
+             buttonColor: Color("VictoryGoldFill"),
+             shadowColor: Color("VictoryGoldShadow"),
+             highlightColor: Color("VictoryGoldHighlight")
+             ))
              */
             
             //Greyed out
+            /*
             Button {} label: {
                 Image(systemName: "star.fill")
                     .foregroundStyle(Color(.gray))
@@ -97,12 +135,12 @@ struct CustomButtons: View {
                 shadowColor: Color("LockedGrayShadow"),
                 highlightColor: Color(.clear)
             ))
-            
+             */
         }
         .padding()
     }
 }
 
 #Preview {
-    CustomButtons()
+    CustomButtonStyle()
 }
