@@ -13,7 +13,7 @@ struct MCQ: Codable {
     let correctIndex: Int
 }
 
-struct DnDQ: Codable {
+struct TokenQ: Codable {
     let tokens: [String]
     let correctOrder: [String]
 }
