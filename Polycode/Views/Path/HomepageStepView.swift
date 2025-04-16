@@ -1,5 +1,5 @@
 //
-//  PageStepView.swift
+//  HomepageStepView.swift
 //  Polycode
 //
 //  Created by Eric Yu on 4/14/25.
@@ -11,13 +11,17 @@ struct HomepageStepView: View {
     let xOffsets: [CGFloat]
     let icons: [String]
     let color: String
+    let onSelect: (Int) -> Void
+
     var body: some View {
-        VStack {
-            ScrollView {
-                Spacer()
-                    .frame(height: 20)
+        ScrollView {
+            VStack(spacing: 16) {
+                Spacer().frame(height: 20)
+
                 ForEach(0..<xOffsets.count, id: \.self) { index in
-                    Button {} label: {
+                    Button {
+                        onSelect(index)
+                    } label: {
                         Image(systemName: icons[index])
                     }
                     .buttonStyle(PathButtonStyle(
@@ -27,14 +31,19 @@ struct HomepageStepView: View {
                     ))
                     .offset(x: xOffsets[index])
                     .padding(10)
+                    .modifier(ButtonPositionReader(index: index))
                 }
-                .frame(maxWidth: .infinity)
             }
+            .frame(maxWidth: .infinity)
         }
-        .backgroundStyle(Color(.red))
     }
 }
 
 #Preview {
-    HomepageStepView(xOffsets: [0, -40, -60, -40, 0, 0], icons: ["star.fill", "star.fill", "star.fill", "star.fill", "bubbles.and.sparkles.fill", "medal.star.fill"], color: "Kiwi")
+    HomepageStepView(
+        xOffsets: [0, -40, -60, -40, 0, 0],
+        icons: ["star.fill", "star.fill", "star.fill", "star.fill", "bubbles.and.sparkles.fill", "medal.star.fill"],
+        color: "Kiwi",
+        onSelect: { _ in }
+    )
 }

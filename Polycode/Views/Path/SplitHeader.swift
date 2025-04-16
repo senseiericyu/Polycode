@@ -38,6 +38,7 @@ struct SplitHeader: View {
             SplitHeaderLayout(dividerWidth: dividerWidth, leftRatio: leftRatio) {
                 Button(action: leftAction) {
                     Text(leftLabel)
+                        .font(.system(size: 35))
                         .frame(maxHeight: .infinity)
                 }
                 .buttonStyle(SplitButtonStyle(
@@ -84,8 +85,8 @@ struct SplitHeader: View {
         .onChange(of: pressedSide) {
             let isPressing = pressedSide != .none
             let animation: Animation = isPressing
-                ? .easeIn(duration: 0.342)
-                : .interpolatingSpring(stiffness: 350, damping: 30)
+            ? .easeIn(duration: 0.237).delay(0.01)
+            : .easeOut(duration: 0.1)
 
             withAnimation(animation) {
                 switch pressedSide {
@@ -124,15 +125,15 @@ struct SplitHeaderLayout: Layout {
 }
 
 
-/*
+
 #Preview {
     SplitHeader(
         leftAction: { print("Left tapped") },
         rightAction: { print("Right tapped") },
-        leftLabel: "Profile",
+        leftLabel: "Header",
         rightLabel: "⚙️",
         buttonColor: Color("KiwiFill"),
         shadowColor: Color("KiwiShadow")
     )
 }
-*/
+
