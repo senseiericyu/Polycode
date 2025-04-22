@@ -6,7 +6,7 @@ struct HomepageStepView: View {
     let solvedLessonIDs: Set<String>
     let onSelect: (Int) -> Void
     
-    let baseColors = ["Kiwi"]
+    let baseColors = ["PythonBlue"]
     
     let reportOffset: (Int, CGFloat) -> Void
     

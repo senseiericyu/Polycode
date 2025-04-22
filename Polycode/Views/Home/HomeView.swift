@@ -50,8 +50,8 @@ struct HomeView: View {
                         rightAction: { },
                         leftLabel: "Sections",
                         rightLabel: "⚙️",
-                        buttonColor: Color("KiwiFill"),
-                        shadowColor: Color("KiwiShadow")
+                        buttonColor: Color("PythonBlueFill"),
+                        shadowColor: Color("PythonBlueShadow")
                     )
                     .padding(.bottom, 4)
 
@@ -86,7 +86,7 @@ struct HomeView: View {
                         let lesson = model.lessons[index]
                         PathPopup(
                             text: lesson.title,
-                            color: Color("KiwiFill"),
+                            color: Color("PythonBlueFill"),
                             triangleOffset: xOffsets[index] ?? 0,
                             isSolved: model.isLessonSolved(lesson),
                             isUnlocked: isUnlocked,
