@@ -57,7 +57,7 @@ struct HomeView: View {
                     SplitHeader(
                         leftAction: { },
                         rightAction: { },
-                        leftLabel: "Profile",
+                        leftLabel: "Sections",
                         rightLabel: "⚙️",
                         buttonColor: Color("\(colors[colorIndex])Fill"),
                         shadowColor: Color("\(colors[colorIndex])Shadow")

@@ -12,7 +12,7 @@ import SwiftUI
 struct TopHeader: View {
     var body: some View {
         HStack {
-            //MARK: -
+            //MARK: - language
             Button(action: {
                 //go to languages screen
             }, label: {
@@ -21,7 +21,7 @@ struct TopHeader: View {
             .border(Color(.black))
 
             Spacer()
-            //MARK: -
+            //MARK: - streak
             Button(action: {
                 //go to streak screen with calendar of days you've done poly
             }, label: {
@@ -30,7 +30,7 @@ struct TopHeader: View {
             .border(Color(.black))
             
             Spacer()
-            //MARK: -
+            //MARK: - currency
             Button(action: {
                 //go to currency screen (idk yet)
             }, label: {
@@ -39,7 +39,7 @@ struct TopHeader: View {
             .border(Color(.black))
             
             Spacer()
-            //MARK: -
+            //MARK: - hearts
             Button(action: {
                 //go to lives shop, where you can buy lives with currency
             }, label: {
