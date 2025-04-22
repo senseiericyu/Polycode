@@ -1,13 +1,4 @@
-//
-//  TailPopup.swift
-//  Polycode
-//
-//  Created by Eric Yu on 4/15/25.
-//
-
 import SwiftUI
-
-// MARK: - combining the shapes for rendering purposes
 
 struct TailBubble: Shape {
     var cornerRadius: CGFloat = 16
@@ -20,7 +11,6 @@ struct TailBubble: Shape {
 
         var path = Path()
 
-        // body
         let rounded = UIBezierPath(
             roundedRect: bubbleRect,
             byRoundingCorners: [.allCorners],
@@ -28,7 +18,6 @@ struct TailBubble: Shape {
         )
         path.addPath(Path(rounded.cgPath))
 
-        // tail
         let triangleX = rect.midX + triangleOffset
         path.move(to: CGPoint(x: triangleX - triangleSize.width / 2, y: bubbleY))
         path.addLine(to: CGPoint(x: triangleX, y: 0))
@@ -39,11 +28,13 @@ struct TailBubble: Shape {
     }
 }
 
-// MARK: -
-struct TailPopup: View {
+struct PathPopup: View {
     let text: String
     let color: Color
     let triangleOffset: CGFloat
+    let isSolved: Bool
+    let isUnlocked: Bool
+    let onStartLesson: () -> Void
 
     let popupHeight: CGFloat = 120
     let triangleSize = CGSize(width: 30, height: 15)
@@ -56,13 +47,12 @@ struct TailPopup: View {
             let totalHeight = popupHeight + triangleSize.height
 
             ZStack {
-                // Unified bubble shape
                 TailBubble(
                     cornerRadius: cornerRadius,
                     triangleSize: triangleSize,
                     triangleOffset: triangleOffset
                 )
-                .fill(color)
+                .fill(isUnlocked ? color : Color("LockedGrayFill"))
                 .frame(width: fullWidth, height: totalHeight)
 
                 VStack {
@@ -73,13 +63,19 @@ struct TailPopup: View {
                         .foregroundStyle(Color(.white))
                         .padding(.horizontal, horizontalPadding)
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                    Button(action: {}, label: {
-                        /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-                            .foregroundStyle(Color("KiwiFill"))
+                    Button(action: {
+                        onStartLesson()
+                    }, label: {
+                        Text(
+                            isSolved ? "Review" :
+                            (isUnlocked ? "Start" : "Locked")
+                        )
+                        .foregroundStyle(isUnlocked ? color : Color("LockedGrayFill"))
                     })
                     .buttonStyle(MainButtonStyle(buttonColor: Color(.white), shadowColor: Color(.lightGray)))
                     .padding(.horizontal, horizontalPadding)
-                    Spacer().frame(height:triangleSize.height)
+                    .disabled(!isUnlocked)
+                    Spacer().frame(height: triangleSize.height)
                 }
                 .frame(width: fullWidth, height: totalHeight)
             }
@@ -90,9 +86,12 @@ struct TailPopup: View {
 }
 
 #Preview {
-    TailPopup(
-        text: "popup",
+    PathPopup(
+        text: "Review Python Basics",
         color: Color("KiwiFill"),
-        triangleOffset: 0
+        triangleOffset: 0,
+        isSolved: false,
+        isUnlocked: true,
+        onStartLesson: {}
     )
 }

@@ -1,35 +1,45 @@
-//
-//  HomepageStepView.swift
-//  Polycode
-//
-//  Created by Eric Yu on 4/14/25.
-//
-
 import SwiftUI
 
 struct HomepageStepView: View {
-    let xOffsets: [CGFloat]
-    let icons: [String]
-    let color: String
+    
+    let lessons: [LessonData]
+    let solvedLessonIDs: Set<String>
     let onSelect: (Int) -> Void
-
+    
+    let baseColors = ["Kiwi"]
+    
+    let reportOffset: (Int, CGFloat) -> Void
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 Spacer().frame(height: 20)
-
-                ForEach(0..<xOffsets.count, id: \.self) { index in
+                
+                ForEach(lessons.indices, id: \.self) { index in
+                    let lesson = lessons[index]
+                    let isSolved = lesson.id.map { solvedLessonIDs.contains($0) } ?? false
+                    let colorKey = baseColors[index % baseColors.count]
+                    let iconName = iconForIndex(index)
+                    
+                    let buttonColor = isSolved ? Color("\(colorKey)Fill") : Color("LockedGrayFill")
+                    let shadowColor = isSolved ? Color("\(colorKey)Shadow") : Color("LockedGrayShadow")
+                    let highlightColor = isSolved ? Color("\(colorKey)Highlight") : Color("LockedGrayFill")
+                    
+                    
                     Button {
                         onSelect(index)
                     } label: {
-                        Image(systemName: icons[index])
+                        Image(systemName: iconName)
                     }
                     .buttonStyle(PathButtonStyle(
-                        buttonColor: Color("\(color)Fill"),
-                        shadowColor: Color("\(color)Shadow"),
-                        highlightColor: Color("\(color)Highlight")
+                        buttonColor: buttonColor,
+                        shadowColor: shadowColor,
+                        highlightColor: highlightColor
                     ))
-                    .offset(x: xOffsets[index])
+                    .offset(x: offsetForIndex(index))
+                    .onAppear {
+                        reportOffset(index, offsetForIndex(index))
+                    }
                     .padding(10)
                     .modifier(ButtonPositionReader(index: index))
                 }
@@ -37,13 +47,39 @@ struct HomepageStepView: View {
             .frame(maxWidth: .infinity)
         }
     }
+    
+    func offsetForIndex(_ index: Int) -> CGFloat {
+        let pattern: [CGFloat] = [0, -40, -60, -40, 0, 0]
+        return pattern[index % pattern.count]
+    }
+    
+    func iconForIndex(_ index: Int) -> String {
+        let icons = [
+            "star.fill",
+            "star.fill",
+            "star.fill",
+            "star.fill",
+            "bubbles.and.sparkles.fill",
+            "medal.star.fill"
+        ]
+        return icons[index % icons.count]
+    }
 }
+
 
 #Preview {
     HomepageStepView(
-        xOffsets: [0, -40, -60, -40, 0, 0],
-        icons: ["star.fill", "star.fill", "star.fill", "star.fill", "bubbles.and.sparkles.fill", "medal.star.fill"],
-        color: "Kiwi",
-        onSelect: { _ in }
+        lessons: [
+            LessonData(id: "lesson1", title: "Intro to Variables", quizIDs: ["python-1-1-1"], quizzes: [
+                Question(id: "python-1-1-1", difficulty: "easy", type: .multipleChoice, prompt: "What is 2 + 2?", data: .multipleChoice(MultipleChoiceData(choices: ["3", "4", "5"], correctIndex: 1)))
+            ]),
+            LessonData(id: "lesson2", title: "Functions", quizIDs: ["python-1-1-2"], quizzes: [
+                Question(id: "python-1-1-2", difficulty: "easy", type: .writeCode, prompt: "Write a function", data: .writeCode(CodeWriteData(starterCode: "def ___(x): return x", blanks: ["func"])))
+            ])
+        ],
+        solvedLessonIDs: ["lesson1"],
+        onSelect: { _ in },
+        reportOffset: { _, _ in }
     )
 }
+
