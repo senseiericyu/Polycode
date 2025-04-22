@@ -47,6 +47,7 @@
 		86DB06DC2DB73B6500D14E03 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 86DB06DB2DB73B6500D14E03 /* FirebaseAuth */; };
 		86DB06E42DB75DAF00D14E03 /* GlowingRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DB06E32DB75DAF00D14E03 /* GlowingRing.swift */; };
 		86DB06E62DB76C5B00D14E03 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DB06E52DB76C5500D14E03 /* LoadingView.swift */; };
+		9AA80C992DB78D400010ECA3 /* DropComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA80C982DB78D270010ECA3 /* DropComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		86DB06D82DB73AFC00D14E03 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		86DB06E32DB75DAF00D14E03 /* GlowingRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingRing.swift; sourceTree = "<group>"; };
 		86DB06E52DB76C5500D14E03 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		9AA80C982DB78D270010ECA3 /* DropComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +268,7 @@
 		86CA8FE12DA8DB4F0063D498 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9AA80C972DB78D040010ECA3 /* DragAndDrop */,
 				861081D62DB7804300759D1D /* PopUps */,
 				86DB06E32DB75DAF00D14E03 /* GlowingRing.swift */,
 				86A010A62DAF25F1000F8619 /* Buttons */,
@@ -281,6 +284,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9AA80C972DB78D040010ECA3 /* DragAndDrop */ = {
+			isa = PBXGroup;
+			children = (
+				9AA80C982DB78D270010ECA3 /* DropComponents.swift */,
+			);
+			path = DragAndDrop;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,6 +443,7 @@
 				86CA8FE32DA8DB690063D498 /* MainButton.swift in Sources */,
 				86A5A78F2DAC9EC7001A7200 /* TextModifier.swift in Sources */,
 				861081DA2DB7808600759D1D /* CorrectModal.swift in Sources */,
+				9AA80C992DB78D400010ECA3 /* DropComponents.swift in Sources */,
 				86DB06E62DB76C5B00D14E03 /* LoadingView.swift in Sources */,
 				86CA8FB12DA7E3370063D498 /* PolycodeApp.swift in Sources */,
 				86DB06D52DB72B1E00D14E03 /* LessonViewModel.swift in Sources */,
