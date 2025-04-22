@@ -2,7 +2,7 @@ import SwiftUI
 
 struct GlowingRing: View {
     @State private var pulse = false
-    let color = Color(.white)
+    let color = Color(.red)
 
     var body: some View {
         Ellipse()

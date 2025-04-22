@@ -48,7 +48,11 @@ struct HomeView: View {
                         .padding(.top, 15)
 
                     SplitHeader(
-                        leftAction: { },
+                        leftAction: {
+                            withAnimation {
+                                appState.screen = .sections
+                            }
+                        },
                         rightAction: { },
                         leftLabel: "Sections",
                         rightLabel: "􁜿",

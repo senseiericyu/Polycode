@@ -7,6 +7,7 @@ enum AppScreen {
     case auth
     case home
     case lesson(id: String)
+    case sections
 }
 
 @Observable
@@ -86,6 +87,12 @@ struct RootView: View {
                         Text("Loading lesson...")
                         Text("Looking for: \(id)")
                         Text("Available: \(model.lessons.compactMap(\.id).joined(separator: ", "))")
+                    }
+                }
+            case .sections:
+                SectionView(model: model) {
+                    withAnimation {
+                        appState.showHome()
                     }
                 }
             }

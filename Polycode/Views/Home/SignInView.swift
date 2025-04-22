@@ -111,7 +111,7 @@ struct SignInView: View {
                 }
             }
             .polyfont()
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(MainButtonStyle(buttonColor: Color("PythonBlueFill"), shadowColor: Color("PythonBlueShadow")))
 
             Button(isNewUser ? "Already have an account? Sign In" : "New here? Create Account") {
                 isNewUser.toggle()
