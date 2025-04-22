@@ -39,6 +39,7 @@
 		86DB06CF2DB727D500D14E03 /* LessonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DB06CE2DB727D500D14E03 /* LessonData.swift */; };
 		86DB06D12DB727E100D14E03 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DB06D02DB727E100D14E03 /* Quiz.swift */; };
 		86DB06D32DB727EC00D14E03 /* QuizData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DB06D22DB727EC00D14E03 /* QuizData.swift */; };
+		86DB06D52DB72B1E00D14E03 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DB06D42DB72B1900D14E03 /* LessonViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		86DB06CE2DB727D500D14E03 /* LessonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonData.swift; sourceTree = "<group>"; };
 		86DB06D02DB727E100D14E03 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		86DB06D22DB727EC00D14E03 /* QuizData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizData.swift; sourceTree = "<group>"; };
+		86DB06D42DB72B1900D14E03 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 		86A5A7712DA916DB001A7200 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				86DB06D42DB72B1900D14E03 /* LessonViewModel.swift */,
 				86DB06CC2DB727CD00D14E03 /* UserData.swift */,
 				86DB06CE2DB727D500D14E03 /* LessonData.swift */,
 				86DB06D02DB727E100D14E03 /* Quiz.swift */,
@@ -391,6 +394,7 @@
 				86CA8FE32DA8DB690063D498 /* MainButton.swift in Sources */,
 				86A5A78F2DAC9EC7001A7200 /* TextModifier.swift in Sources */,
 				86CA8FB12DA7E3370063D498 /* PolycodeApp.swift in Sources */,
+				86DB06D52DB72B1E00D14E03 /* LessonViewModel.swift in Sources */,
 				86A5A7812DA91DCA001A7200 /* CodeFixView.swift in Sources */,
 				86A5A77F2DA91D9A001A7200 /* TokenView.swift in Sources */,
 				86A5A7992DACED01001A7200 /* HomepageStepView.swift in Sources */,

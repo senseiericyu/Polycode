@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  Polycode
-//
-//  Created by Eric Yu on 4/21/25.
-//
-
 import Foundation
 import FirebaseFirestore
 
@@ -15,4 +8,6 @@ struct UserData: Codable, Identifiable {
     var streak: Int
     var lastLogged: Date
     var createdAt: Date
+    
+    var solvedQuizIDs: [String]
 }
