@@ -16,7 +16,6 @@ struct MCView: View {
     var body: some View {
         ZStack {
             VStack {
-                // Progress bar
                 HStack {
                     ProgressView(value: progress)
                         .tint(.green)
@@ -71,6 +70,7 @@ struct MCView: View {
                 .disabled(selectedIndex == nil)
                 .transition(.move(edge: .bottom).combined(with: .opacity))
                 .animation(.easeInOut(duration: 0.3), value: isAnswered)
+                .padding(.horizontal)
             }
             .padding()
             .onChange(of: question) {

@@ -27,7 +27,7 @@ class SessionManager {
                     name: name,
                     email: email,
                     streak: 0,
-                    lastLogged: Date(),
+                    lastLogged: [Date()],
                     createdAt: Date(),
                     solvedLessonIDs: []
                 )
@@ -75,20 +75,29 @@ struct SignInView: View {
 
     var body: some View {
         VStack(spacing: 20) {
+            Image("Paulie-noback")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 140, height: 200)
+                .padding(.top, -150)
             Text("Welcome to Polycode")
                 .font(.title.bold())
+                .polyfont()
 
             TextField("Email", text: $email)
+                .polyfont()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocorrectionDisabled(true)
                 .textInputAutocapitalization(.never)
             SecureField("Password", text: $password)
+                .polyfont()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocorrectionDisabled(true)
                 .textInputAutocapitalization(.never)
 
             if isNewUser {
                 TextField("Your Name", text: $name)
+                    .polyfont()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .autocorrectionDisabled(true)
                     .textInputAutocapitalization(.never)
@@ -101,14 +110,29 @@ struct SignInView: View {
                     session.signIn(email: email, password: password, onSuccess: onSignedIn)
                 }
             }
+            .polyfont()
             .buttonStyle(.borderedProminent)
 
             Button(isNewUser ? "Already have an account? Sign In" : "New here? Create Account") {
                 isNewUser.toggle()
             }
             .font(.footnote)
+            .polyfont()
         }
         .padding()
     }
 }
 
+#Preview {
+    struct SignInPreviewWrapper: View {
+        @State private var session = SessionManager()
+
+        var body: some View {
+            SignInView(session: $session) {
+                print("✅ Signed in successfully!")
+            }
+        }
+    }
+
+    return SignInPreviewWrapper()
+}

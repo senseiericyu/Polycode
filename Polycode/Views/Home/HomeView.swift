@@ -34,13 +34,15 @@ struct HomeView: View {
     
     @State private var xOffsets: [Int: CGFloat] = [:]
 
+    @Binding var appState: AppState
+    
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .topLeading) {
                 Color("Backdrop").ignoresSafeArea()
 
                 VStack(spacing: 0) {
-                    TopHeader()
+                    TopHeader(loggedDates: model.loggedDates, appState: $appState)
                         .padding(.horizontal, 18)
                         .padding(.bottom, 5)
                         .padding(.top, 15)
@@ -49,7 +51,7 @@ struct HomeView: View {
                         leftAction: { },
                         rightAction: { },
                         leftLabel: "Sections",
-                        rightLabel: "⚙️",
+                        rightLabel: "􁜿",
                         buttonColor: Color("PythonBlueFill"),
                         shadowColor: Color("PythonBlueShadow")
                     )
@@ -104,6 +106,7 @@ struct HomeView: View {
             .onAppear {
                 if let uid = Auth.auth().currentUser?.uid {
                     model.loadUserAndLessons(userId: uid)
+                    model.logTodayIfNeeded(for: uid)
                 }
             }
         }

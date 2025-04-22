@@ -22,9 +22,11 @@ struct LessonView: View {
         } else {
             VStack(spacing: 20) {
                 Text("Lesson Complete!")
+                    .polyfont()
                     .font(.title)
                     .bold()
                 Text("You got \(correctCount) out of \(lesson.quizzes.count) correct.")
+                    .polyfont()
                 Button("Finish") {
                     if correctCount == lesson.quizzes.count,
                        let id = lesson.id {
@@ -32,7 +34,9 @@ struct LessonView: View {
                     }
                     onComplete()
                 }
-                .buttonStyle(.borderedProminent)
+                .polyfont()
+                .buttonStyle(MainButtonStyle(buttonColor:(Color("PythonBlueFill")), shadowColor: Color("PythonBlueShadow")))
+                .foregroundStyle(Color.white)
             }
             .padding()
         }

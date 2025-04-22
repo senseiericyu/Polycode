@@ -10,6 +10,9 @@
 		861081DA2DB7808600759D1D /* CorrectModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861081D92DB7808600759D1D /* CorrectModal.swift */; };
 		861081DC2DB7808F00759D1D /* IncorrectModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861081DB2DB7808F00759D1D /* IncorrectModal.swift */; };
 		861081DE2DB780C900759D1D /* MCButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861081DD2DB780C900759D1D /* MCButtonStyle.swift */; };
+		861081E52DB7AC1B00759D1D /* WrapStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861081E42DB7AC1B00759D1D /* WrapStack.swift */; };
+		861081E82DB7B45200759D1D /* StreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861081E72DB7B44E00759D1D /* StreakView.swift */; };
+		861081EA2DB7BB0800759D1D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861081E92DB7BB0400759D1D /* SettingsView.swift */; };
 		86A0109F2DAEF92A000F8619 /* PathPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A0109E2DAEF92A000F8619 /* PathPopup.swift */; };
 		86A010A12DAF2366000F8619 /* TopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A010A02DAF2366000F8619 /* TopHeader.swift */; };
 		86A010A32DAF24B6000F8619 /* PathButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A010A22DAF24B6000F8619 /* PathButton.swift */; };
@@ -70,6 +73,9 @@
 		861081D92DB7808600759D1D /* CorrectModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectModal.swift; sourceTree = "<group>"; };
 		861081DB2DB7808F00759D1D /* IncorrectModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncorrectModal.swift; sourceTree = "<group>"; };
 		861081DD2DB780C900759D1D /* MCButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCButtonStyle.swift; sourceTree = "<group>"; };
+		861081E42DB7AC1B00759D1D /* WrapStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapStack.swift; sourceTree = "<group>"; };
+		861081E72DB7B44E00759D1D /* StreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakView.swift; sourceTree = "<group>"; };
+		861081E92DB7BB0400759D1D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		86A0109E2DAEF92A000F8619 /* PathPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathPopup.swift; sourceTree = "<group>"; };
 		86A010A02DAF2366000F8619 /* TopHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeader.swift; sourceTree = "<group>"; };
 		86A010A22DAF24B6000F8619 /* PathButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathButton.swift; sourceTree = "<group>"; };
@@ -144,6 +150,17 @@
 			path = PopUps;
 			sourceTree = "<group>";
 		};
+		861081E62DB7B44400759D1D /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				861081E92DB7BB0400759D1D /* SettingsView.swift */,
+				861081E72DB7B44E00759D1D /* StreakView.swift */,
+				86A5A7902DACAD82001A7200 /* SplitHeader.swift */,
+				86A010A02DAF2366000F8619 /* TopHeader.swift */,
+			);
+			path = HeaderView;
+			sourceTree = "<group>";
+		};
 		86A010A62DAF25F1000F8619 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +176,7 @@
 		86A5A7632DA9104D001A7200 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				861081E62DB7B44400759D1D /* HeaderView */,
 				86B1FD392DAF873C00EC94EE /* RootView.swift */,
 				86A5A7642DA91092001A7200 /* Home */,
 				86A5A7652DA91097001A7200 /* Path */,
@@ -181,8 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				86A5A7982DACED01001A7200 /* HomepageStepView.swift */,
-				86A5A7902DACAD82001A7200 /* SplitHeader.swift */,
-				86A010A02DAF2366000F8619 /* TopHeader.swift */,
 			);
 			path = Path;
 			sourceTree = "<group>";
@@ -266,6 +282,7 @@
 		86CA8FE12DA8DB4F0063D498 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				861081E42DB7AC1B00759D1D /* WrapStack.swift */,
 				861081D62DB7804300759D1D /* PopUps */,
 				86DB06E32DB75DAF00D14E03 /* GlowingRing.swift */,
 				86A010A62DAF25F1000F8619 /* Buttons */,
@@ -427,6 +444,7 @@
 				86DB06CF2DB727D500D14E03 /* LessonData.swift in Sources */,
 				86B1FD3A2DAF873C00EC94EE /* RootView.swift in Sources */,
 				86DB06E42DB75DAF00D14E03 /* GlowingRing.swift in Sources */,
+				861081E52DB7AC1B00759D1D /* WrapStack.swift in Sources */,
 				86DB06D32DB727EC00D14E03 /* QuestionData.swift in Sources */,
 				86A5A7872DA91EB7001A7200 /* LessonView.swift in Sources */,
 				86CA8FE32DA8DB690063D498 /* MainButton.swift in Sources */,
@@ -438,10 +456,12 @@
 				86DB06D92DB73B0000D14E03 /* SignInView.swift in Sources */,
 				86A5A7812DA91DCA001A7200 /* CodeFixView.swift in Sources */,
 				86A5A77F2DA91D9A001A7200 /* TokenView.swift in Sources */,
+				861081E82DB7B45200759D1D /* StreakView.swift in Sources */,
 				86A5A7992DACED01001A7200 /* HomepageStepView.swift in Sources */,
 				86A5A7752DA9172F001A7200 /* HomeView.swift in Sources */,
 				86A010A82DAF264D000F8619 /* StreakButton.swift in Sources */,
 				86A5A7772DA91D09001A7200 /* QuestionView.swift in Sources */,
+				861081EA2DB7BB0800759D1D /* SettingsView.swift in Sources */,
 				86DB06CD2DB727CD00D14E03 /* UserData.swift in Sources */,
 				86DB06D12DB727E100D14E03 /* Question.swift in Sources */,
 				861081DE2DB780C900759D1D /* MCButtonStyle.swift in Sources */,

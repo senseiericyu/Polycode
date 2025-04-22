@@ -64,7 +64,7 @@ struct RootView: View {
                 ZStack {
                     HomeView(model: model, onStartLesson: { id in
                         withAnimation { appState.screen = .lesson(id: id) }
-                    })
+                    }, appState: $appState)
 
                     if appState.showLoadingOverlay {
                         LoadingView()

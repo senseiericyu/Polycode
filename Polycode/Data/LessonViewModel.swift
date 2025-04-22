@@ -4,6 +4,9 @@ import SwiftUI
 
 @Observable
 class LessonViewModel {
+    @MainActor var loggedDates: [Date] = []
+    var streak: Int = 0
+
     var lessons: [LessonData] = []
     var solvedLessonIDs: Set<String> = []
 
@@ -11,6 +14,7 @@ class LessonViewModel {
 
     func loadUserAndLessons(userId: String) {
         print("🔄 loadUserAndLessons called for user: \(userId)")
+        
 
         let userRef = db.collection("users").document(userId)
         userRef.getDocument { snapshot, error in
@@ -20,6 +24,11 @@ class LessonViewModel {
             }
 
             self.solvedLessonIDs = Set(user.solvedLessonIDs)
+        
+            Task { @MainActor in
+                self.loggedDates = user.lastLogged
+            }
+            
             print("✅ Loaded user with \(self.solvedLessonIDs.count) solved lessons")
 
             self.db.collection("lessons").getDocuments { snapshot, error in
@@ -105,5 +114,36 @@ class LessonViewModel {
     func isLessonSolved(_ lesson: LessonData) -> Bool {
         guard let id = lesson.id else { return false }
         return solvedLessonIDs.contains(id)
+    }
+    
+    func logTodayIfNeeded(for userId: String) {
+        let today = Calendar.current.startOfDay(for: Date())
+        
+        db.collection("users").document(userId).getDocument { snapshot, _ in
+            guard let data = snapshot?.data(),
+                  let existingDates = data["lastLogged"] as? [Timestamp] else {
+                // First time logging in, write new array
+                self.db.collection("users").document(userId).updateData([
+                    "lastLogged": [Timestamp(date: today)]
+                ])
+                return
+            }
+
+            let alreadyLoggedToday = existingDates.contains { ts in
+                Calendar.current.isDate(ts.dateValue(), inSameDayAs: today)
+            }
+
+            if !alreadyLoggedToday {
+                self.db.collection("users").document(userId).updateData([
+                    "lastLogged": FieldValue.arrayUnion([Timestamp(date: today)])
+                ]) { error in
+                    if let error = error {
+                        print("❌ Failed to log today: \(error)")
+                    } else {
+                        print("🔥 Logged today's date!")
+                    }
+                }
+            }
+        }
     }
 }

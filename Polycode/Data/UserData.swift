@@ -6,7 +6,7 @@ struct UserData: Codable, Identifiable {
     var name: String
     var email: String
     var streak: Int
-    var lastLogged: Date
+    var lastLogged: [Date] 
     var createdAt: Date
     
     var solvedLessonIDs: [String]
