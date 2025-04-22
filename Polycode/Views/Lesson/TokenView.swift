@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct DnDView: View {
+struct TokenView: View {
     let originalTokens: [String]
     let correctOrder: [String]
     var onAnswered: ((Bool) -> Void)? = nil

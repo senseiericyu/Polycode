@@ -4,13 +4,15 @@ enum PressedSide {
     case left, right, none
 }
 
-struct TestSplitHeader: View {
+struct SplitHeader: View {
     let leftAction: () -> Void
     let rightAction: () -> Void
     let leftLabel: String
     let rightLabel: String
     let buttonColor: Color
     let shadowColor: Color
+    
+    let leftRatio = 0.82
 
     @GestureState private var isLeftPressed: Bool = false
     @GestureState private var isRightPressed: Bool = false
@@ -20,19 +22,23 @@ struct TestSplitHeader: View {
 
     private let buttonHeight: CGFloat = 80
     private let dividerWidth: CGFloat = 2
-    private let dividerOffset: CGFloat = 4 // matches shadow/slant padding
+    private let dividerOffset: CGFloat = 4 
+    private let horizontalPadding: CGFloat = 16
 
     var pressedSide: PressedSide {
         if isLeftPressed { return .left }
         else if isRightPressed { return .right }
         else { return .none }
     }
+    
+    
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-            SplitHeaderLayout(dividerWidth: dividerWidth) {
+            SplitHeaderLayout(dividerWidth: dividerWidth, leftRatio: leftRatio) {
                 Button(action: leftAction) {
                     Text(leftLabel)
+                        .font(.system(size: 35))
                         .frame(maxHeight: .infinity)
                 }
                 .buttonStyle(SplitButtonStyle(
@@ -64,20 +70,23 @@ struct TestSplitHeader: View {
                 )
             }
             .frame(height: buttonHeight)
+            .padding(.horizontal, horizontalPadding)
 
             GeometryReader { geo in
+                let layoutWidth = geo.size.width - 2 * horizontalPadding
+
                 MorphingDividerShape(morphValue: animatedSlant)
                     .fill(shadowColor)
                     .frame(width: dividerWidth, height: buttonHeight + dividerOffset)
-                    .offset(x: geo.size.width * 0.8)
+                    .offset(x: layoutWidth * leftRatio + horizontalPadding)
             }
         }
         .frame(height: buttonHeight)
         .onChange(of: pressedSide) {
             let isPressing = pressedSide != .none
             let animation: Animation = isPressing
-                ? .easeIn(duration: 0.342)
-                : .interpolatingSpring(stiffness: 350, damping: 30)
+            ? .easeIn(duration: 0.237).delay(0.01)
+            : .easeOut(duration: 0.1)
 
             withAnimation(animation) {
                 switch pressedSide {
@@ -92,7 +101,7 @@ struct TestSplitHeader: View {
 
 struct SplitHeaderLayout: Layout {
     var dividerWidth: CGFloat = 2
-    var leftRatio: CGFloat = 0.8
+    var leftRatio: CGFloat
 
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
         let width = proposal.width ?? 0
@@ -118,12 +127,13 @@ struct SplitHeaderLayout: Layout {
 
 
 #Preview {
-    TestSplitHeader(
+    SplitHeader(
         leftAction: { print("Left tapped") },
         rightAction: { print("Right tapped") },
-        leftLabel: "Profile",
+        leftLabel: "Header",
         rightLabel: "⚙️",
         buttonColor: Color("KiwiFill"),
         shadowColor: Color("KiwiShadow")
     )
 }
+

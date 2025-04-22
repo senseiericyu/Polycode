@@ -1,20 +1,13 @@
 import Foundation
-import SwiftData
+import FirebaseFirestore
 
-@MainActor
-@Observable
-class UserData {
-    var user: User
-
-    init(modelContext: ModelContext) {
-        let descriptor = FetchDescriptor<User>()
-
-        if let existing = try? modelContext.fetch(descriptor).first {
-            self.user = existing
-        } else {
-            let newUser = User(name: "Player 1")
-            modelContext.insert(newUser)
-            self.user = newUser
-        }
-    }
+struct UserData: Codable, Identifiable {
+    @DocumentID var id: String?
+    var name: String
+    var email: String
+    var streak: Int
+    var lastLogged: Date
+    var createdAt: Date
+    
+    var solvedQuizIDs: [String]
 }
