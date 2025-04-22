@@ -40,6 +40,9 @@
 		86DB06D12DB727E100D14E03 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DB06D02DB727E100D14E03 /* Quiz.swift */; };
 		86DB06D32DB727EC00D14E03 /* QuizData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DB06D22DB727EC00D14E03 /* QuizData.swift */; };
 		86DB06D52DB72B1E00D14E03 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DB06D42DB72B1900D14E03 /* LessonViewModel.swift */; };
+		9A6B48602DB7622300AD0CDE /* MCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6B485F2DB761F900AD0CDE /* MCButton.swift */; };
+		9A6B48632DB775A500AD0CDE /* IncorrectModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6B48622DB7758800AD0CDE /* IncorrectModal.swift */; };
+		9A6B48652DB775AE00AD0CDE /* CorrectModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6B48642DB775A900AD0CDE /* CorrectModal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +95,9 @@
 		86DB06D02DB727E100D14E03 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		86DB06D22DB727EC00D14E03 /* QuizData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizData.swift; sourceTree = "<group>"; };
 		86DB06D42DB72B1900D14E03 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
+		9A6B485F2DB761F900AD0CDE /* MCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCButton.swift; sourceTree = "<group>"; };
+		9A6B48622DB7758800AD0CDE /* IncorrectModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncorrectModal.swift; sourceTree = "<group>"; };
+		9A6B48642DB775A900AD0CDE /* CorrectModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectModal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,7 @@
 		86A010A62DAF25F1000F8619 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				9A6B485F2DB761F900AD0CDE /* MCButton.swift */,
 				86CA8FE22DA8DB690063D498 /* MainButton.swift */,
 				86A010A22DAF24B6000F8619 /* PathButton.swift */,
 				86A010A42DAF2518000F8619 /* SplitButton.swift */,
@@ -135,6 +142,7 @@
 		86A5A7632DA9104D001A7200 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9A6B48612DB7757D00AD0CDE /* PopUps */,
 				86A5A7642DA91092001A7200 /* Home */,
 				86A5A7652DA91097001A7200 /* Path */,
 				86A5A7672DA910BC001A7200 /* Lesson */,
@@ -245,6 +253,15 @@
 				86A0109E2DAEF92A000F8619 /* PathPopup.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		9A6B48612DB7757D00AD0CDE /* PopUps */ = {
+			isa = PBXGroup;
+			children = (
+				9A6B48642DB775A900AD0CDE /* CorrectModal.swift */,
+				9A6B48622DB7758800AD0CDE /* IncorrectModal.swift */,
+			);
+			path = PopUps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,6 +403,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A6B48602DB7622300AD0CDE /* MCButton.swift in Sources */,
+				9A6B48632DB775A500AD0CDE /* IncorrectModal.swift in Sources */,
 				86A010A12DAF2366000F8619 /* TopHeader.swift in Sources */,
 				86DB06CF2DB727D500D14E03 /* LessonData.swift in Sources */,
 				86B1FD3A2DAF873C00EC94EE /* RootView.swift in Sources */,
@@ -406,6 +425,7 @@
 				86A010A32DAF24B6000F8619 /* PathButton.swift in Sources */,
 				86A5A77D2DA91D8C001A7200 /* MCView.swift in Sources */,
 				86A5A7912DACAD82001A7200 /* SplitHeader.swift in Sources */,
+				9A6B48652DB775AE00AD0CDE /* CorrectModal.swift in Sources */,
 				86A010A52DAF2518000F8619 /* SplitButton.swift in Sources */,
 				86A0109F2DAEF92A000F8619 /* PathPopup.swift in Sources */,
 				86A5A7832DA91DE4001A7200 /* CodeWriteView.swift in Sources */,
