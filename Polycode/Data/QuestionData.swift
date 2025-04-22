@@ -1,7 +1,7 @@
 import Foundation
 import FirebaseFirestore
 
-enum QuizData: Codable {
+enum QuestionData: Codable {
     case multipleChoice(MultipleChoiceData)
     case writeCode(CodeWriteData)
     case tokenCode(TokenCodeData)
