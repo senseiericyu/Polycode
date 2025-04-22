@@ -1,18 +1,15 @@
-//
-//  PolycodeApp.swift
-//  Polycode
-//
-//  Created by Eric Yu on 4/10/25.
-//
-
 import SwiftUI
-import SwiftData
+import Firebase
 
 @main
 struct PolycodeApp: App {
+    init() {
+        FirebaseApp.configure()
+    }
+
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            RootView()
         }
     }
 }

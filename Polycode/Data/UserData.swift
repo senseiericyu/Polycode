@@ -9,5 +9,5 @@ struct UserData: Codable, Identifiable {
     var lastLogged: Date
     var createdAt: Date
     
-    var solvedQuizIDs: [String]
+    var solvedLessonIDs: [String]
 }
