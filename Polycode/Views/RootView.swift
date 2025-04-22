@@ -14,22 +14,17 @@ class AppState {
     var screen: AppScreen = .initializing
     var showLoadingOverlay: Bool = false
     var session: SessionManager = SessionManager()
-    var isColdLaunch: Bool = true
-    
-    init() {
-        tryAutoSignIn()
-    }
-    
+
     func tryAutoSignIn() {
         if let user = Auth.auth().currentUser {
             session.fetchUserData(uid: user.uid) { [weak self] in
                 self?.showLoadingThenHome(fromColdLaunch: true)
             }
         } else {
-            self.screen = .auth
+            screen = .auth
         }
     }
-    
+
     func showLoadingThenHome(fromColdLaunch: Bool) {
         screen = .home
 
@@ -43,30 +38,34 @@ class AppState {
         }
     }
 
+    func showHome() {
+        screen = .home
+    }
 }
 
 struct RootView: View {
     @State private var appState = AppState()
-    
+    @State private var model = LessonViewModel()
+
     var body: some View {
         ZStack {
             switch appState.screen {
             case .initializing:
                 LoadingView()
+
             case .auth:
                 SignInView(session: $appState.session) {
                     withAnimation {
-                        appState.showLoadingThenHome(fromColdLaunch: true)
+                        appState.showLoadingThenHome(fromColdLaunch: false)
                     }
                 }
-                
+
             case .home:
                 ZStack {
-                    HomeView(onStartLesson: { id in
+                    HomeView(model: model, onStartLesson: { id in
                         withAnimation { appState.screen = .lesson(id: id) }
                     })
 
-                    
                     if appState.showLoadingOverlay {
                         LoadingView()
                             .transition(.opacity)
@@ -74,37 +73,28 @@ struct RootView: View {
                             .zIndex(1.0)
                     }
                 }
-                
+
             case .lesson(let id):
-                VStack(spacing: 20) {
-                    Text("Lesson: \(id)")
-                        .font(.title)
-                    
-                    Button("✅ Mark as Solved") {
-                        if let user = Auth.auth().currentUser {
-                            let userRef = Firestore.firestore().collection("users").document(user.uid)
-                            userRef.updateData([
-                                "solvedLessonIDs": FieldValue.arrayUnion([id])
-                            ]) { error in
-                                if let error = error {
-                                    print("❌ Failed to mark lesson as solved: \(error)")
-                                } else {
-                                    print("✅ Lesson marked as solved: \(id)")
-                                    withAnimation {
-                                        appState.showLoadingThenHome(fromColdLaunch: false)
-                                    }
-                                }
-                            }
+                if let lesson = model.lessons.first(where: { $0.id?.trimmingCharacters(in: .whitespacesAndNewlines) == id.trimmingCharacters(in: .whitespacesAndNewlines) }) {
+                    LessonView(lesson: lesson, model: model) {
+                        withAnimation {
+                            appState.showHome()
                         }
                     }
-                    .buttonStyle(.borderedProminent)
+                } else {
+                    VStack {
+                        Text("Loading lesson...")
+                        Text("Looking for: \(id)")
+                        Text("Available: \(model.lessons.compactMap(\.id).joined(separator: ", "))")
+                    }
                 }
-                .padding()
             }
+        }
+        .onAppear {
+            appState.tryAutoSignIn()
         }
     }
 }
-
 
 #Preview {
     RootView()

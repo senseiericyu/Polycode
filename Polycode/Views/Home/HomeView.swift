@@ -26,7 +26,7 @@ struct ButtonPositionReader: ViewModifier {
 }
 
 struct HomeView: View {
-    @State private var model = LessonViewModel()
+    @State var model: LessonViewModel
     var onStartLesson: (String) -> Void
 
     @State private var selectedIndex: Int? = nil
@@ -92,6 +92,7 @@ struct HomeView: View {
                             isUnlocked: isUnlocked,
                             onStartLesson: {
                                 onStartLesson(lesson.id ?? "")
+                                print("▶️ Starting lesson with id: \(lesson.id ?? "nil")")
                             }
                         )
                         .position(x: frame.midX, y: frame.maxY + 10)
@@ -109,8 +110,3 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView(onStartLesson: { lessonID in
-        print("Start lesson: \(lessonID)")
-    })
-}

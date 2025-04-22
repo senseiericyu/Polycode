@@ -1,18 +1,40 @@
-//
-//  LessonView.swift
-//  Polycode
-//
-//  Created by Eric Yu on 4/11/25.
-//
-
 import SwiftUI
 
 struct LessonView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    let lesson: LessonData
+    let model: LessonViewModel
+    let onComplete: () -> Void
 
-#Preview {
-    LessonView()
+    @State private var currentIndex = 0
+    @State private var correctCount = 0
+    @State private var progress: Double = 0.0
+
+    var body: some View {
+        if currentIndex < lesson.quizzes.count {
+            QuestionView(
+                question: lesson.quizzes[currentIndex],
+                progress: $progress
+            ) { isCorrect in
+                if isCorrect { correctCount += 1 }
+                currentIndex += 1
+                progress = Double(currentIndex) / Double(lesson.quizzes.count)
+            }
+        } else {
+            VStack(spacing: 20) {
+                Text("Lesson Complete!")
+                    .font(.title)
+                    .bold()
+                Text("You got \(correctCount) out of \(lesson.quizzes.count) correct.")
+                Button("Finish") {
+                    if correctCount == lesson.quizzes.count,
+                       let id = lesson.id {
+                        model.markLessonSolved(id)
+                    }
+                    onComplete()
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .padding()
+        }
+    }
 }

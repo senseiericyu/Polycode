@@ -1,18 +1,3 @@
-//
-//  IncorrectModal.swift
-//  Polycode
-//
-//  Created by Eric Yu on 4/22/25.
-//
-
-
-//
-//  IncorrectModal.swift
-//  Polycode
-//
-//  Created by Mia Yang on 4/22/25.
-//
-
 import SwiftUI
 
 struct IncorrectModal: View {
@@ -20,43 +5,71 @@ struct IncorrectModal: View {
     let onDismiss: () -> Void
 
     var body: some View {
-        VStack(spacing: 16) {
-            HStack(spacing: 8) {
-                Image(systemName: "xmark.circle.fill")
-                    .foregroundColor(.red)
-                    .font(.system(size: 28, weight: .bold))
-                Text("Incorrect")
-                    .font(.title2)
-                    .bold()
-                    .foregroundColor(.red)
-            }
-            
-            VStack(spacing: 4) {
-                Text("Correct Answer:")
-                    .font(.body)
-                    .bold()
-                    .foregroundColor(.red)
+        VStack {
+            Spacer() // Push to bottom
+
+            VStack(spacing: 24) {
+                VStack(spacing: 8) {
+                    Image(systemName: "xmark.circle.fill")
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(.white, Color("WrongRedShadow"))
+                        .font(.system(size: 36, weight: .bold))
+                    Text("Incorrect")
+                        .font(.title2)
+                        .bold()
+                        .foregroundColor(Color("WrongRedShadow"))
+
+                    VStack(spacing: 4) {
+                        Text("Correct Answer:")
+                            .font(.body)
+                            .foregroundStyle(Color("WrongRedShadow"))
+
+                        Text(correctAnswer)
+                            .font(.title3)
+                            .bold()
+                            .foregroundColor(Color("WrongRedShadow"))
+                    }
+                }
+
+                Button(action: {
+                    onDismiss()
+                }, label: {
+                    Text("Got It")
+                        .foregroundColor(.white)
+                })
+                .buttonStyle(MainButtonStyle(
+                    buttonColor: Color("WrongRedFill"),
+                    shadowColor: Color("WrongRedShadow")
+                ))
                 
-                Text(correctAnswer)
-                    .font(.title3)
-                    .foregroundColor(.red)
             }
-            
-            Button("GOT IT") {
-                onDismiss()
-            }
-            .font(.headline)
-            .foregroundColor(.black)
-            .frame(maxWidth: .infinity)
             .padding()
-            .background(Color.red)
-            .cornerRadius(20)
-            .padding(.horizontal)
+            .frame(maxWidth: .infinity)
+            .frame(height: UIScreen.main.bounds.height * 0.28)
+            .background(Color("WrongRedHighlight"))
+            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .transition(.move(edge: .bottom))
         }
-        .padding()
-        .frame(maxWidth: .infinity)
-        .background(Color(red: 18/255, green: 28/255, blue: 36/255))
-        .cornerRadius(16)
-        .padding()
+        .ignoresSafeArea()
     }
+}
+
+#Preview {
+    struct IncorrectPreviewWrapper: View {
+        @State private var show = true
+
+        var body: some View {
+            ZStack {
+                Color.black.opacity(0.1).ignoresSafeArea()
+                
+                if show {
+                    IncorrectModal(correctAnswer: "snake_case") {
+                        show = false
+                    }
+                }
+            }
+        }
+    }
+
+    return IncorrectPreviewWrapper()
 }

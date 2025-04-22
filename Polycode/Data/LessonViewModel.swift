@@ -1,4 +1,4 @@
-import Foundation
+import FirebaseAuth
 import FirebaseFirestore
 import SwiftUI
 
@@ -6,6 +6,7 @@ import SwiftUI
 class LessonViewModel {
     var lessons: [LessonData] = []
     var solvedLessonIDs: Set<String> = []
+
     private let db = Firestore.firestore()
 
     func loadUserAndLessons(userId: String) {
@@ -38,7 +39,9 @@ class LessonViewModel {
                         continue
                     }
 
-                    print("🧩 Lesson loaded: \(lesson.title), quizzes to fetch: \(lesson.quizIDs.count)")
+                    lesson.id = doc.documentID
+                    print("🧩 Lesson loaded: \(lesson.title) — ID: \(lesson.id ?? "nil")")
+
                     let group = DispatchGroup()
                     var hydrated: [Question] = []
 
@@ -48,16 +51,17 @@ class LessonViewModel {
 
                         self.db.collection("quizzes").document(id).getDocument { qSnap, _ in
                             defer { group.leave() }
-                            if let data = qSnap?.data() {
-                                do {
-                                    let decoded = try Firestore.Decoder().decode(Question.self, from: data)
-                                    hydrated.append(decoded)
-                                    print("✅ SUCCESS: Decoded question \(decoded.id)")
-                                } catch {
-                                    print("❌ Decode error for quiz \(id): \(error)")
-                                }
-                            } else {
+                            guard let data = qSnap?.data() else {
                                 print("⚠️ No quiz data for \(id)")
+                                return
+                            }
+
+                            do {
+                                let decoded = try Firestore.Decoder().decode(Question.self, from: data)
+                                hydrated.append(decoded)
+                                print("✅ SUCCESS: Decoded question \(decoded.id)")
+                            } catch {
+                                print("❌ Decode error for quiz \(id): \(error)")
                             }
                         }
                     }
@@ -65,8 +69,8 @@ class LessonViewModel {
                     outerGroup.enter()
                     group.notify(queue: .main) {
                         lesson.quizzes = hydrated.sorted { $0.id < $1.id }
-                        loadedLessons.append(lesson)
                         print("✅ Finished lesson: \(lesson.title) with \(hydrated.count) quizzes")
+                        loadedLessons.append(lesson)
                         outerGroup.leave()
                     }
                 }
@@ -74,6 +78,25 @@ class LessonViewModel {
                 outerGroup.notify(queue: .main) {
                     self.lessons = loadedLessons.sorted { ($0.id ?? "") < ($1.id ?? "") }
                     print("✅ All lessons loaded: \(self.lessons.count)")
+                    for l in self.lessons {
+                        print(" - \(l.id ?? "nil"): \(l.title)")
+                    }
+                }
+            }
+        }
+    }
+
+    func markLessonSolved(_ lessonID: String) {
+        print("✅ Marking lesson as solved: \(lessonID)")
+        solvedLessonIDs.insert(lessonID)
+        if let user = Auth.auth().currentUser {
+            db.collection("users").document(user.uid).updateData([
+                "solvedLessonIDs": FieldValue.arrayUnion([lessonID])
+            ]) { error in
+                if let error = error {
+                    print("❌ Failed to mark lesson as solved: \(error)")
+                } else {
+                    print("🧾 Firestore updated with solved lesson \(lessonID)")
                 }
             }
         }
@@ -82,17 +105,5 @@ class LessonViewModel {
     func isLessonSolved(_ lesson: LessonData) -> Bool {
         guard let id = lesson.id else { return false }
         return solvedLessonIDs.contains(id)
-    }
-
-    func isLessonSolvedOrNext(_ lesson: LessonData) -> Bool {
-        guard let lessonID = lesson.id else { return false }
-        if solvedLessonIDs.contains(lessonID) { return true }
-        guard let index = lessons.firstIndex(where: { $0.id == lessonID }) else { return false }
-        let nextIndex = lessons.firstIndex(where: { !isLessonSolved($0) }) ?? lessons.count
-        return index == nextIndex
-    }
-
-    func solvedCount(for lesson: LessonData) -> Int {
-        return isLessonSolved(lesson) ? 1 : 0
     }
 }

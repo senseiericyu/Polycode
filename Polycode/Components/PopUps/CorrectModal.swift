@@ -1,54 +1,63 @@
-//
-//  CorrectModal.swift
-//  Polycode
-//
-//  Created by Eric Yu on 4/22/25.
-//
-
-
-//
-//  CorrectModal.swift
-//  Polycode
-//
-//  Created by Mia Yang on 4/22/25.
-//
-
 import SwiftUI
 
 struct CorrectModal: View {
     let onDismiss: () -> Void
 
     var body: some View {
-        VStack(spacing: 16) {
-            HStack(spacing: 8) {
-                Image(systemName: "checkmark.circle.fill")
-                    .foregroundColor(.green)
-                    .font(.system(size: 28, weight: .bold))
-                Text("Correct!")
-                    .font(.title2)
-                    .bold()
-                    .foregroundColor(.green)
+        VStack {
+            Spacer()
+
+            VStack(spacing: 24) {
+                VStack(spacing: 8) {
+                    Image(systemName: "checkmark.circle.fill")
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(.white, Color("KiwiShadow"))
+                        .font(.system(size: 36, weight: .bold))
+                    
+                    Text("Correct!")
+                        .font(.title2)
+                        .bold()
+                        .foregroundColor(Color("KiwiShadow"))
+                }
+
+                Button(action: {
+                    onDismiss()
+                }, label: {
+                    Text("Next")
+                        .foregroundColor(.white)
+                })
+                .buttonStyle(MainButtonStyle(
+                    buttonColor: Color("KiwiFill"),
+                    shadowColor: Color("KiwiShadow")
+                ))
             }
-            
-            Text("Great job! 🎉")
-                .foregroundColor(.green)
-                .font(.body)
-            
-            Button("Continue") {
-                onDismiss()
-            }
-            .font(.headline)
-            .foregroundColor(.black)
-            .frame(maxWidth: .infinity)
             .padding()
-            .background(Color.green)
-            .cornerRadius(20)
-            .padding(.horizontal)
+            .frame(maxWidth: .infinity)
+            .frame(height: UIScreen.main.bounds.height * 0.25)
+            .background(Color("KiwiHighlight").brightness(+0.15).saturation(0.65))
+            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .transition(.move(edge: .bottom))
         }
-        .padding()
-        .frame(maxWidth: .infinity)
-        .background(Color(red: 18/255, green: 28/255, blue: 36/255))
-        .cornerRadius(16)
-        .padding()
+        .ignoresSafeArea()
     }
+}
+
+#Preview {
+    struct CorrectPreviewWrapper: View {
+        @State private var show = true
+
+        var body: some View {
+            ZStack {
+                Color.black.opacity(0.1).ignoresSafeArea()
+
+                if show {
+                    CorrectModal {
+                        show = false
+                    }
+                }
+            }
+        }
+    }
+
+    return CorrectPreviewWrapper()
 }
